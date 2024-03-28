@@ -1,6 +1,6 @@
 ## Introduction to Operating System | Full Course for Beginners - Mike Murphy
 
-Auto-generated documentation site from [https://www.youtube.com/watch?v=dOiA2nNJpc0](https://www.youtube.com/watch?v=dOiA2nNJpc0)
+Auto-generated documentation site from [Introduction to Operating System | Full Course for Beginners - Mike Murphy](https://www.youtube.com/watch?v=dOiA2nNJpc0)
 
 Created using [Lumentis](https://github.com/hrishioa/lumentis)
 
