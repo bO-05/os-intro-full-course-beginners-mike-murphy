@@ -1,0 +1,15 @@
+{
+  "index": "Overview of Operating Systems",
+  "hardware-resources": "Hardware Resources",
+  "development-cycles-and-requirements-analysis": "Development Cycles and Requirements Analysis",
+  "cpu-features-and-kernel-architectures": "CPU Features and Kernel Architectures",
+  "uml-and-use-cases": "UML and Use Cases",
+  "interrupts-and-interrupt-handling": "Interrupts and Interrupt Handling",
+  "uml-state-diagrams-and-dynamic-memory-allocation": "UML State Diagrams and Dynamic Memory Allocation",
+  "memory-resources-and-paging": "Memory Resources and Paging",
+  "memory-protection-and-page-tables": "Memory Protection and Page Tables",
+  "test-driven-design-and-uml-class-diagrams": "Test-Driven Design and UML Class Diagrams",
+  "virtual-memory-and-object-oriented-design": "Virtual Memory and Object-Oriented Design",
+  "object-oriented-implementations-and-page-replacement": "Object-Oriented Implementations and Page Replacement",
+  "process-management": "Process Management"
+}

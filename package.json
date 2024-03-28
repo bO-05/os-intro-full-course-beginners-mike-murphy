@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "@types/node": "^20.11.30",
+    "next": "^14.1.4",
+    "nextra": "^2.13.4",
+    "nextra-theme-docs": "^2.13.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.4.3"
+  },
+  "name": "Introduction-with-lumentis",
+  "description": "In this comprehensive series of lectures, Dr. Mike Murphy will provide a detailed overview of the essential concepts and structures that make up an operating system. From hardware resources such as CPU and memory to disk input & output and disk scheduling, we will delve deep into the development cycles and requirements analysis for the OS's effective functioning. The course will also cover crucial topics like CPU features, kernel architectures, and UML activity diagrams. In addition to interrupts, use cases, and interrupt handling, we'll also cover UML state diagrams, dynamic memory allocation, and kernel memory allocation. Moreover, we will discuss memory resources, paging, memory protection, page tables, test-driven design, UML class diagrams, virtual memory, object-oriented design, and object-oriented implementations. Join us on this exciting journey as we explore one of the most critical components of modern computing - operating systems. ",
+  "version": "0.0.1",
+  "scripts": {
+    "devstart": "next dev -p 5656 & node start.js",
+    "dev": "next dev -p 5656",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [
+    "Operating Systems",
+    "Memory Management",
+    "CPU Scheduling",
+    "Interrupt Handling",
+    "Process Management",
+    "Disk I/O",
+    "File Systems",
+    "Virtual Memory",
+    "Paging",
+    "Unix/Linux"
+  ]
+}

@@ -1,0 +1,71 @@
+import { Callout, Steps, Step } from "nextra-theme-docs";
+
+# Memory
+
+Memory management is a crucial aspect of operating systems, responsible for efficiently allocating, deallocating, and organizing memory resources. The main memory, or Random Access Memory (RAM), is a volatile storage medium that holds the currently executing programs, their data, and the operating system itself.
+
+## Memory Hierarchy
+
+The memory hierarchy consists of different levels of memory, each with varying speeds and capacities. The hierarchy is designed to balance the trade-off between performance and cost.
+
+<Steps>
+
+### Step 1: Registers
+Registers are the fastest and most expensive memory, located within the CPU. They store frequently accessed data and instructions for immediate use by the CPU.
+
+### Step 2: Cache Memory
+Cache memory is a high-speed memory that sits between the CPU and the main memory. It is designed to reduce the average time to access data from the main memory. There are typically multiple levels of cache (L1, L2, L3) with increasing sizes and latencies.
+
+### Step 3: Main Memory (RAM)
+The main memory, or RAM, is the primary storage for currently executing programs and their data. It is slower than cache memory but much faster than secondary storage devices like hard drives or SSDs.
+
+### Step 4: Secondary Storage
+Secondary storage devices, such as hard drives and SSDs, provide persistent storage for programs and data. They have large capacities but are significantly slower than RAM.
+
+</Steps>
+
+## Memory Allocation
+
+The operating system is responsible for managing the allocation of memory to processes. It must ensure that each process has sufficient memory to execute while preventing processes from accessing memory allocated to other processes.
+
+There are two main approaches to memory allocation:
+
+1. **Contiguous Allocation**: Memory is allocated to processes in contiguous blocks. This approach is simple but can lead to [fragmentation](/memory-resources-and-paging/memory-resources).
+
+2. **Non-Contiguous Allocation**: Memory is allocated to processes in non-contiguous blocks. This approach is more flexible and efficient, as it allows the operating system to allocate memory in smaller chunks. [Paging](/memory-resources-and-paging/paging) and segmentation are examples of non-contiguous allocation techniques.
+
+## Memory Protection
+
+Memory protection is a critical feature of modern operating systems, ensuring that processes cannot access or modify memory allocated to other processes or the operating system itself. This is achieved through a combination of hardware and software mechanisms, such as:
+
+- **Base and Limit Registers**: These registers define the range of memory addresses that a process can access. Any attempt to access memory outside this range results in a hardware exception.
+
+- **Virtual Memory**: Virtual memory provides each process with its own virtual address space, which is mapped to physical memory by the operating system. This allows the operating system to control access to physical memory and prevents processes from directly accessing each other's memory.
+
+For more information on memory protection, see the [Memory Protection](/memory-protection-and-page-tables/memory-protection) section.
+
+## Examples
+
+Here's an example of how memory allocation and deallocation might work in C:
+
+```c
+#include <stdlib.h>
+
+int main() {
+    int *arr = (int*) malloc(10 * sizeof(int)); // Allocate memory for an array of 10 integers
+    
+    // Use the allocated memory
+    for (int i = 0; i < 10; i++) {
+        arr[i] = i;
+    }
+    
+    free(arr); // Deallocate the memory
+    return 0;
+}
+```
+
+In this example, `malloc` is used to allocate memory for an array of 10 integers, and `free` is used to deallocate the memory when it is no longer needed.
+
+<Callout type="info">
+Memory management is a complex topic, and there are many more advanced concepts and techniques not covered here, such as garbage collection, memory compression, and memory-mapped files.
+</Callout>

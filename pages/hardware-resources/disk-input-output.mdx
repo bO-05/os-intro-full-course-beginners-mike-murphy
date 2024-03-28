@@ -1,0 +1,116 @@
+import { Callout, Steps, Step } from "nextra-theme-docs";
+
+# Disk Input & Output
+
+In this section, we'll dive into the world of disk input and output (I/O) operations and explore how the operating system manages these critical tasks. Disk I/O plays a crucial role in the overall performance and functionality of a computer system, as it involves reading from and writing to persistent storage devices such as hard disk drives (HDDs) and solid-state drives (SSDs).
+
+## Disk Attachment and Interfaces
+
+To understand disk I/O, let's first look at how disks are physically attached to the computer system. Disks are connected to the motherboard through various interfaces, such as:
+
+- Integrated Drive Electronics (IDE) or Parallel ATA (PATA)
+- Serial ATA (SATA)
+- Small Computer System Interface (SCSI)
+- Serial Attached SCSI (SAS)
+
+These interfaces define the communication protocol and the physical connection between the disk and the motherboard. Modern systems predominantly use SATA for consumer-grade hardware and SAS for enterprise-level storage solutions.
+
+<Callout type="info">
+  Fun fact: The term "IDE" is often used interchangeably with "ATA" (Advanced Technology Attachment), although ATA is the official standard name.
+</Callout>
+
+## Magnetic Disks and Solid-State Drives
+
+Traditionally, hard disk drives (HDDs) have been the primary storage devices in computers. HDDs use magnetic disks to store data, and they consist of the following components:
+
+- Platters: Circular disks coated with a magnetic material for storing data.
+- Spindle: The motor that rotates the platters at high speeds.
+- Read/Write Heads: The components that read from and write to the platters.
+- Actuator: The mechanism that moves the read/write heads across the platters.
+
+```mermaid
+graph LR
+  A[Platter] --> B[Spindle]
+  B --> C[Read/Write Head]
+  C --> D[Actuator]
+```
+
+In recent years, solid-state drives (SSDs) have gained popularity due to their faster performance and lower access times compared to HDDs. SSDs use flash memory to store data and have no moving parts, making them more durable and energy-efficient.
+
+## Disk Addressing and Partitioning
+
+To efficiently manage and access data on disks, the operating system uses disk addressing schemes and partitioning techniques.
+
+### Disk Addressing
+
+Disk addressing refers to the method used to specify the location of data on the disk. There are two common addressing schemes:
+
+1. Cylinder-Head-Sector (CHS) Addressing:
+   - Cylinder: The concentric tracks on a platter.
+   - Head: The read/write head used to access a specific track.
+   - Sector: The smallest unit of data that can be read or written on a track.
+
+2. Logical Block Addressing (LBA):
+   - Assigns a unique number to each sector on the disk.
+   - Provides a linear address space, making it easier for the operating system to access data.
+
+Modern operating systems primarily use LBA for disk addressing, as it simplifies the process and allows for larger disk capacities.
+
+### Disk Partitioning
+
+Disk partitioning is the process of dividing a physical disk into multiple logical sections called partitions. Each partition can be treated as a separate storage unit and can have its own file system. Partitioning offers several benefits:
+
+- Improved organization and management of data.
+- Isolation of the operating system from user data.
+- Ability to install multiple operating systems on the same disk (multi-booting).
+
+The two most common partition table formats are:
+
+1. Master Boot Record (MBR):
+   - Supports up to four primary partitions.
+   - Limited to a maximum partition size of 2 TiB.
+
+2. GUID Partition Table (GPT):
+   - Supports up to 128 primary partitions.
+   - Allows for larger partition sizes (up to 9.4 ZB).
+
+<Steps>
+### Step 1
+
+Create a partition table on the disk using a partitioning tool like fdisk (for MBR) or gdisk (for GPT).
+
+### Step 2
+
+Define the partitions by specifying their size, type, and file system.
+
+### Step 3
+
+Format the partitions with the desired file system (e.g., ext4, NTFS, FAT32) to make them usable by the operating system.
+</Steps>
+
+## Disk Scheduling and I/O Optimization
+
+To optimize disk I/O performance, the operating system employs various disk scheduling algorithms and techniques. The goal of disk scheduling is to minimize the average seek time and rotational latency, thereby improving overall system performance.
+
+Some common disk scheduling algorithms include:
+
+- First-Come-First-Serve (FCFS): Serves I/O requests in the order they arrive.
+- Shortest Seek Time First (SSTF): Selects the I/O request with the minimum seek time from the current head position.
+- SCAN (Elevator Algorithm): Moves the disk head in one direction, servicing requests along the way, until it reaches the end, then reverses direction.
+- C-SCAN (Circular SCAN): Similar to SCAN, but moves the disk head in one direction only, then returns to the beginning to start over.
+
+<Callout type="info">
+  The SCAN algorithm is often referred to as the "Elevator Algorithm" because it mimics the behavior of an elevator in a building, moving in one direction and stopping at each floor as needed.
+</Callout>
+
+In addition to disk scheduling, modern operating systems employ various I/O optimization techniques, such as:
+
+- Disk Caching: Storing frequently accessed data in memory to reduce disk I/O operations.
+- Read-Ahead: Prefetching data from the disk into memory based on predicted future access patterns.
+- Write-Back Caching: Buffering write operations in memory and flushing them to the disk in batches.
+
+These optimization techniques help improve disk I/O performance by reducing the number of physical disk accesses and leveraging the faster speed of memory.
+
+## Conclusion
+
+Understanding disk input and output is essential for [operating system developers](/development-cycles-and-requirements-analysis) and [system administrators](/memory-resources-and-paging) alike. By efficiently managing disk I/O operations, the operating system can ensure optimal performance, reliability, and data integrity. As storage technologies continue to evolve, it's crucial to stay updated with the latest advancements and techniques in disk I/O management.

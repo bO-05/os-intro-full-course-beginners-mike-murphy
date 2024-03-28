@@ -1,0 +1,70 @@
+import { Callout, Steps, Step } from "nextra-theme-docs";
+
+# Interrupt Handling
+
+Interrupt handling is a crucial aspect of operating systems that allows the CPU to respond to external events and manage multiple processes efficiently. In this section, we'll explore how the operating system handles interrupts and the mechanisms involved in the process.
+
+## Interrupt Handling Mechanism
+
+When an interrupt occurs, the CPU must save its current state, handle the interrupt, and then restore its state to continue executing the original process. The interrupt handling mechanism follows these steps:
+
+<Steps>
+### Step 1: Interrupt Recognition
+
+The CPU recognizes an interrupt when it receives a signal from a hardware device or a software interrupt instruction. The CPU then saves its current state, including the program counter and register values, onto the stack.
+
+### Step 2: Interrupt Dispatcher
+
+The CPU switches to kernel mode and jumps to a predefined memory location called the interrupt vector, which contains the address of the interrupt handler routine.
+
+### Step 3: Interrupt Handler
+
+The interrupt handler routine is executed to service the interrupt. This routine is specific to the type of interrupt that occurred and may involve accessing hardware devices, updating system data structures, or scheduling processes.
+
+### Step 4: Interrupt Completion
+
+Once the interrupt handler routine is completed, the CPU restores its state from the stack and resumes executing the interrupted process.
+</Steps>
+
+## Interrupt Vector Table
+
+The interrupt vector table (IVT) is a data structure used by the CPU to determine which interrupt handler routine to execute when an interrupt occurs. Each entry in the IVT contains the memory address of a specific interrupt handler routine.
+
+<Callout>
+The first 32 entries in the IVT are reserved for CPU exceptions, such as divide-by-zero errors or page faults. The remaining entries are used for hardware interrupts and software interrupts.
+</Callout>
+
+## Fast and Slow Interrupt Handlers
+
+Interrupt handling is divided into two categories: fast interrupt handlers and slow interrupt handlers.
+
+- **Fast Interrupt Handlers**: These handlers execute quickly and are responsible for critical tasks that need immediate attention, such as updating system data structures or acknowledging hardware devices. Fast interrupt handlers execute atomically, meaning they cannot be interrupted by other interrupts.
+
+- **Slow Interrupt Handlers**: These handlers execute longer-running tasks that can be interrupted by other interrupts. Slow interrupt handlers are typically responsible for processing data or performing I/O operations. They are usually scheduled as separate tasks in the operating system's task queue.
+
+## Example: Keyboard Interrupt
+
+Let's consider an example of how the operating system handles a keyboard interrupt:
+
+1. When a key is pressed, the keyboard controller sends an interrupt signal to the CPU.
+2. The CPU saves its current state and jumps to the interrupt vector table entry for the keyboard interrupt.
+3. The fast interrupt handler for the keyboard interrupt reads the scancode from the keyboard controller and acknowledges the interrupt.
+4. The fast interrupt handler enqueues a task in the operating system's task queue to process the scancode and update the input buffer.
+5. The CPU restores its state and resumes executing the interrupted process.
+6. Later, the slow interrupt handler dequeues the task from the task queue and processes the scancode, updating the input buffer accordingly.
+
+## Interrupt Storm and Livelock
+
+An interrupt storm occurs when the CPU receives a continuous stream of interrupts, causing it to spend most of its time handling interrupts rather than executing processes. This situation can lead to a livelock, where the system appears to be frozen and unresponsive.
+
+To prevent interrupt storms and livelocks, operating systems employ various techniques, such as:
+
+- Interrupt prioritization: Assigning priorities to different types of interrupts and handling higher-priority interrupts first.
+- Interrupt coalescing: Combining multiple interrupts of the same type into a single interrupt to reduce the number of interrupts the CPU must handle.
+- Interrupt masking: Temporarily disabling interrupts to allow the CPU to complete critical tasks without interruption.
+
+<Callout>
+For more information on how the CPU handles interrupts at the hardware level, see the [Interrupts](/interrupts) section.
+</Callout>
+
+By effectively managing interrupts, the operating system ensures that the CPU can respond to external events and manage multiple processes efficiently, providing a seamless user experience.
